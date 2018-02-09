@@ -1,0 +1,25 @@
+inherit xorg
+
+NAME="xorgproto"
+VERSION=2018.1
+RELEASE=1
+CATEGORY="Devel"
+SUMMARY="X.Org X11 protocol headers"
+DESCRIPTION="This package provides the headers and specification documents
+defining the X Window System Core Protocol, Version 11.  It also includes a
+number of headers that aren't purely protocol related, but are depended upon
+by many other X Window System packages to provide common definitions and
+porting layer."
+
+ARCH="noarch"
+
+OBSOLETES="bigreqsproto compositeproto damageproto dmxproto fixesproto\
+ fontsproto glproto inputproto kbproto presentproto randrproto\
+ recordproto renderproto resourceproto scrnsaverproto windowswmproto\
+ xcmiscproto xextproto xf86bigfontproto xineramaproto xproto"
+
+# this wants to install pkgconfig files to /usr/share/pkgconfig, but that
+# would cause these to be found when cross-compiling, causing -I/usr/include
+# to be added and thereby breaking such a build.
+MAKEOPTS+=" datadir=/usr/lib"
+DOCS="COPYING-*"
