@@ -1,7 +1,7 @@
-inherit xorg
+inherit xorg meson
 
 NAME="xorgproto"
-VERSION=2018.1
+VERSION=2018.2
 RELEASE=1
 CATEGORY="Devel"
 SUMMARY="X.Org X11 protocol headers"
@@ -21,5 +21,5 @@ OBSOLETES="bigreqsproto compositeproto damageproto dmxproto fixesproto\
 # this wants to install pkgconfig files to /usr/share/pkgconfig, but that
 # would cause these to be found when cross-compiling, causing -I/usr/include
 # to be added and thereby breaking such a build.
-MAKEOPTS+=" datadir=/usr/lib"
+CYGMESON_ARGS="--datadir=/usr/lib"
 DOCS="COPYING-*"
